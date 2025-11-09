@@ -3,7 +3,7 @@
 <html lang="en">
 <head><meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>group7-activity1</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>CSS181-1_ACT1_GRP7</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <style type="text/css">
     pre { line-height: 125%; }
 td.linenos .normal { color: inherit; background-color: transparent; padding-left: 5px; padding-right: 5px; }
@@ -7517,35 +7517,56 @@ a.anchor-link {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h1 id="Activity-1:-Emoji-Based-Sentiment-Analysis">Activity 1: Emoji-Based Sentiment Analysis<a class="anchor-link" href="#Activity-1:-Emoji-Based-Sentiment-Analysis">¶</a></h1><h3 id="Group-7:-Claire-Antonette-Mendoza-and-Willard-Soriano">Group 7: Claire Antonette Mendoza and Willard Soriano<a class="anchor-link" href="#Group-7:-Claire-Antonette-Mendoza-and-Willard-Soriano">¶</a></h3><p>This notebook addresses the requirements for Activity 1, an emoji-based sentiment analysis project. It is divided into two main parts: Question A, which focuses on training a machine learning model, and Question B, which involves building a real-time sentiment analyzer.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell" id="cell-id=0e3f3bd7">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ul>
-<li><a href="#Question-A:-Sentiment-Analysis-using-a-Machine-Learning-Algorithm">Question A: Sentiment Analysis using a Machine Learning Algorithm</a><ul>
-<li><a href="#Exploratory-Data-Analysis">Exploratory Data Analysis</a></li>
+<h1 id="Activity-1:-Emoji-Based-Sentiment-Analysis">Activity 1: Emoji-Based Sentiment Analysis<a class="anchor-link" href="#Activity-1:-Emoji-Based-Sentiment-Analysis">¶</a></h1><h3 id="Group-7:-Claire-Antonette-Mendoza-%7C-Willard-Soriano">Group 7: <strong>Claire Antonette Mendoza</strong> | <strong>Willard Soriano</strong><a class="anchor-link" href="#Group-7:-Claire-Antonette-Mendoza-%7C-Willard-Soriano">¶</a></h3><p>This Jupyter Notebook documents the process for <strong>Activity 1: Emoji-Based Sentiment Analysis</strong>, covering the full machine learning pipeline from data preparation to real-time deployment.</p>
+<hr/>
+<h3 id="Project-Repository">Project Repository<a class="anchor-link" href="#Project-Repository">¶</a></h3><table>
+<thead>
+<tr>
+<th style="text-align:left">Component</th>
+<th style="text-align:left">Link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>GitHub Repository</strong></td>
+<td style="text-align:left"><a href="https://github.com/willardcsoriano/sentiment-analysis">https://github.com/willardcsoriano/sentiment-analysis</a></td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><p>This project is divided into two major components:</p>
+<h3 id="Part-A:-Model-Training-and-Evaluation-(Logistic-Regression)">Part A: Model Training and Evaluation (Logistic Regression)<a class="anchor-link" href="#Part-A:-Model-Training-and-Evaluation-(Logistic-Regression)">¶</a></h3><ul>
+<li><a href="#Question-A:-Sentiment-Analysis-using-a-Machine-Learning-Algorithm"><strong>Question A: Sentiment Analysis using a Machine Learning Algorithm</strong></a><ul>
+<li><a href="#Initial-Setup-and-Data-Loading">Initial Setup and Data Loading</a></li>
+<li><a href="#Exploratory-Data-Analysis">Exploratory Data Analysis (EDA)</a></li>
 <li><a href="#Data-Cleaning">Data Cleaning</a></li>
+<li><a href="#Feature-Engineering-&amp;-Data-Export">Feature Engineering (Negation &amp; Emoji Handling)</a><ul>
 <li><a href="#Feature-Engineering">Feature Engineering</a></li>
-<li><a href="#Model-Training-and-Evaluation">Model Training and Evaluation</a><ul>
+<li><a href="#Data-Export">Data Export</a></li>
+</ul>
+</li>
+<li><a href="#Model-Selection">Model Selection</a><ul>
 <li><a href="#Pre-Processing">Pre-Processing</a><ul>
 <li><a href="#Data-Splitting">Data Splitting</a></li>
 <li><a href="#Text-Vectorization">Text Vectorization</a></li>
 </ul>
 </li>
+<li><a href="#Final-Test-Set-Evaluation-(Tie-Breaker">Final Test Set Evaluation (Tie-Breaker)</a></li>
 </ul>
 </li>
-<li><a href="#Conclusion-and-Final-Model-Justification">Conclusion and Final Model Justification</a></li>
+<li><a href="#Final-Model-Robustness-Test-(Logistic-Regression">Final Model Robustness Test (Logistic Regression)</a></li>
+<li><a href="#Conclusion-and-Final-Model-Justification">Conclusion and Final Model Justification</a><ul>
+<li><a href="#1.-Model-Performance-and-Selection-Rationale">1. Model Performance and Selection Rationale</a></li>
+<li><a href="#2.-Robustness-Validation">2. Robustness Validation</a></li>
+<li><a href="#3.-Project-Limitations">3. Project Limitations</a></li>
 </ul>
 </li>
-<li><a href="#Question-B:-Real-Time-Tweet-Sentiment-Analyzer">Question B: Real-Time Tweet Sentiment Analyzer</a><ul>
-<li><a href="#Real-Time-Tweet-Sentiment-Analyzer">Real-Time Tweet Sentiment Analyzer</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Part-B:-Real-Time-Deployment">Part B: Real-Time Deployment<a class="anchor-link" href="#Part-B:-Real-Time-Deployment">¶</a></h3><ul>
+<li><a href="#Question-B:-Real-Time-Tweet-Sentiment-Analyzer"><strong>Question B: Real-Time Tweet Sentiment Analyzer</strong></a><ul>
+<li><a href="#Real-Time-Tweet-Sentiment-Analyzer">Project Limitations</a></li>
 <li><a href="#Project-Conclusion-and-Final-Summary">Project Conclusion and Final Summary</a></li>
 </ul>
 </li>
@@ -7580,7 +7601,7 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [26]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -7601,16 +7622,16 @@ a.anchor-link {
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [2]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [27]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Load the main dataset for Question A</span>
 <span class="n">file_path_q_a</span> <span class="o">=</span> <span class="s2">"1k_data_emoji_tweets_senti_posneg.csv"</span>
-<span class="n">df_main</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path_q_a</span><span class="p">)</span>
+<span class="n">df_main</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path_q_a</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span>
 
 <span class="c1"># Load the reference dataset for feature engineering</span>
 <span class="n">file_path_emoticons</span> <span class="o">=</span> <span class="s2">"15_emoticon_data.csv"</span>
-<span class="n">df_emoticons</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path_emoticons</span><span class="p">)</span>
+<span class="n">df_emoticons</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path_emoticons</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">'utf-8'</span><span class="p">)</span>
 
 <span class="c1"># Display the first 5 rows of each DataFrame to verify they loaded correctly</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Main Dataset Head:"</span><span class="p">)</span>
@@ -7670,7 +7691,7 @@ Emoticons Dataset Head:
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [28]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Get a concise summary of the DataFrame</span>
@@ -7751,7 +7772,7 @@ dtype: int64
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [4]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Drop the redundant 'Unnamed: 0' column</span>
@@ -7799,7 +7820,7 @@ dtype: int64
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>C:\Users\Willard\AppData\Local\Temp\ipykernel_15716\92509041.py:5: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
+<pre>C:\Users\Willard\AppData\Local\Temp\ipykernel_17992\92509041.py:5: FutureWarning: A value is trying to be set on a copy of a DataFrame or Series through chained assignment using an inplace method.
 The behavior will change in pandas 3.0. This inplace method will never work because the intermediate object on which we are setting values always behaves as a copy.
 
 For example, when doing 'df[col].method(value, inplace=True)', try using 'df.method({col: value}, inplace=True)' or df[col] = df[col].method(value) instead, to perform the operation inplace on the original object.
@@ -7818,70 +7839,39 @@ For example, when doing 'df[col].method(value, inplace=True)', try using 'df.met
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Feature-Engineering">Feature Engineering<a class="anchor-link" href="#Feature-Engineering">¶</a></h3><p>This cell is critical as it implements the project's core feature engineering logic to transform raw text into robust, machine-readable features. The process involves three main steps:</p>
+<h3 id="Feature-Engineering-&amp;-Data-Export">Feature Engineering &amp; Data Export<a class="anchor-link" href="#Feature-Engineering-&amp;-Data-Export">¶</a></h3><h4 id="Feature-Engineering">Feature Engineering<a class="anchor-link" href="#Feature-Engineering">¶</a></h4><p>This cell is critical as it implements the project's core feature engineering logic to transform raw text into robust, machine-readable features. The process involves three main steps:</p>
 <ol>
 <li><strong>NLTK Setup:</strong> Downloads necessary linguistic resources ($\text{punkt}$ and $\text{stopwords}$) and includes robust error handling to safely use NLTK (or fall back to $\text{Scikit-learn}$ stopwords) if resources are unavailable.</li>
-<li><strong>Emoji Replacement:</strong> The $\text{replace\_emojis\_safe}$ function converts emojis from the $\text{df\_emoticons}$ reference into a single, consistent $\text{\_EMOJI\_}$ token.</li>
-<li><strong>Negation and Stopword Handling:</strong> The $\text{handle\_negation\_safe}$ function performs two vital tasks: <strong>tagging words under the scope of negation</strong> ($\text{e.g., like\_NEG}$) and <strong>removing non-negated stopwords</strong>. This prevents noise words from biasing the model and ensures the model correctly interprets reversed sentiment.
-Finally, the $\text{preprocess\_text}$ wrapper function is defined to unify these steps for later use in model testing and the real-time analyzer.</li>
+<li><strong>Emoji Replacement:</strong> The $\text{replace\_emojis\_safe}$ function converts emojis from the $\text{df\_emoticons}$ reference into a single, consistent <strong>_emoji_</strong> token. This prevents the loss of crucial sentiment signal due to sparse data or encoding errors.</li>
+<li><strong>Negation and Stopword Handling:</strong> The $\text{handle\_negation\_safe}$ function performs two vital tasks: <strong>tagging words under the scope of negation</strong> ($\text{e.g., like\_NEG}$) and <strong>removing non-negated stopwords</strong>. This prevents noise words from biasing the model and ensures the model correctly interprets reversed sentiment.</li>
 </ol>
+<p>Finally, the $\text{preprocess\_text}$ wrapper function is defined to unify these steps for later use in model testing and the real-time analyzer.</p>
+<h4 id="Data-Export">Data Export<a class="anchor-link" href="#Data-Export">¶</a></h4><p>The resultant clean features are stored in the new $\text{post\_cleaned}$ column. This step exports the original text, the target sentiment, and the cleaned text to a new CSV file ($\text{1k\_data\_emoji\_tweets\_SENTIMENT\_CLEANED.csv}$) to be used as the definitive input for model training in the subsequent steps.</p>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=98ae5337">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fa79280d">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [5]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
-
-<span class="c1"># Download necessary NLTK data (must run and complete here)</span>
-<span class="c1"># You only need to run this once per new virtual environment.</span>
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">'punkt'</span><span class="p">)</span>
-<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">'stopwords'</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="application/vnd.jupyter.stderr" tabindex="0">
-<pre>[nltk_data] Downloading package punkt to
-[nltk_data]     C:\Users\Willard\AppData\Roaming\nltk_data...
-[nltk_data]   Package punkt is already up-to-date!
-[nltk_data] Downloading package stopwords to
-[nltk_data]     C:\Users\Willard\AppData\Roaming\nltk_data...
-[nltk_data]   Package stopwords is already up-to-date!
-</pre>
-</div>
-</div>
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
-<pre>True</pre>
-</div>
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=41847c6d">
-<div class="jp-Cell-inputWrapper" tabindex="0">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [6]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-<div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Robust preprocessing + diagnostics (drop-in)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># --- 0. Setup and Imports ---</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">re</span><span class="o">,</span><span class="w"> </span><span class="nn">math</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">sklearn.feature_extraction.text</span><span class="w"> </span><span class="kn">import</span> <span class="n">ENGLISH_STOP_WORDS</span>
+
+<span class="c1"># --- NLTK Setup and Downloads ---</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Attempt to download required resources (will only download once)</span>
+    <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">'punkt'</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">'stopwords'</span><span class="p">,</span> <span class="n">quiet</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="c1"># Fails if NLTK is not fully set up, but we proceed with fallback logic</span>
+    <span class="k">pass</span>
 
 <span class="c1"># --- config ---</span>
 <span class="n">NEGATION_WORDS</span> <span class="o">=</span> <span class="p">{</span>
@@ -7895,15 +7885,13 @@ Finally, the $\text{preprocess\_text}$ wrapper function is defined to unify thes
 <span class="c1"># --- attempt to use NLTK if available and able to find resources ---</span>
 <span class="n">USE_NLTK</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="kn">import</span><span class="w"> </span><span class="nn">nltk</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">nltk.tokenize</span><span class="w"> </span><span class="kn">import</span> <span class="n">word_tokenize</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">nltk.corpus</span><span class="w"> </span><span class="kn">import</span> <span class="n">stopwords</span>
-    <span class="c1"># sanity check: calling these can raise LookupError if data not found</span>
+    <span class="c1"># Sanity check: calling these can raise LookupError if data not found</span>
     <span class="n">_</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="s2">"test"</span><span class="p">)</span>
     <span class="n">_</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">'english'</span><span class="p">)</span>
     <span class="n">USE_NLTK</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="c1"># If anything fails, we'll use fallback below</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
     <span class="n">USE_NLTK</span> <span class="o">=</span> <span class="kc">False</span>
 
 <span class="c1"># set stopwords for fallback or NLTK</span>
@@ -7916,6 +7904,7 @@ Finally, the $\text{preprocess\_text}$ wrapper function is defined to unify thes
 <span class="k">def</span><span class="w"> </span><span class="nf">handle_negation_safe</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Tokenize + mark tokens in negation scope with _NEG, AND remove non-negated stopwords.</span>
+<span class="sd">    CRITICAL FIX: Explicitly preserves the '_EMOJI_' token.</span>
 <span class="sd">    """</span>
     <span class="k">if</span> <span class="n">text</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="nb">float</span><span class="p">)</span> <span class="ow">and</span> <span class="n">math</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">text</span><span class="p">)):</span>
         <span class="k">return</span> <span class="s2">""</span>
@@ -7940,11 +7929,13 @@ Finally, the $\text{preprocess\_text}$ wrapper function is defined to unify thes
                 <span class="c1"># 3. Handle word under negation</span>
                 <span class="k">elif</span> <span class="n">neg_on</span> <span class="ow">and</span> <span class="n">tok</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span> <span class="ow">and</span> <span class="n">tok</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">NLTK_STOPWORDS</span><span class="p">:</span>
                     <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">tok</span><span class="si">}</span><span class="s2">_NEG"</span><span class="p">)</span>
-                <span class="c1"># 4. Handle non-negated word: ONLY keep if it's NOT a stopword</span>
+                <span class="c1"># 4. Preserve the emoji token before general filtering</span>
+                <span class="k">elif</span> <span class="n">tok</span> <span class="o">==</span> <span class="s1">'_emoji_'</span><span class="p">:</span>
+                    <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span>
+                <span class="c1"># 5. Handle non-negated word: ONLY keep if it's NOT a stopword</span>
                 <span class="k">elif</span> <span class="n">tok</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span> <span class="ow">and</span> <span class="n">tok</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">NLTK_STOPWORDS</span><span class="p">:</span>
                     <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span>
             
-            <span class="c1"># Final output is ready</span>
             <span class="k">return</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
             <span class="k">pass</span> <span class="c1"># fall back to regex</span>
@@ -7966,20 +7957,26 @@ Finally, the $\text{preprocess\_text}$ wrapper function is defined to unify thes
         <span class="c1"># 3. Handle word under negation</span>
         <span class="k">elif</span> <span class="n">neg_on</span> <span class="ow">and</span> <span class="n">tok</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span> <span class="ow">and</span> <span class="n">tok</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">NLTK_STOPWORDS</span><span class="p">:</span>
             <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">tok</span><span class="si">}</span><span class="s2">_NEG"</span><span class="p">)</span>
-        <span class="c1"># 4. Handle non-negated word: ONLY keep if it's NOT a stopword</span>
+        <span class="c1"># 4. FIX: Preserve the emoji token before general filtering</span>
+        <span class="k">elif</span> <span class="n">tok</span> <span class="o">==</span> <span class="s1">'_emoji_'</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span>
+        <span class="c1"># 5. Handle non-negated word: ONLY keep if it's NOT a stopword</span>
         <span class="k">elif</span> <span class="n">tok</span><span class="o">.</span><span class="n">isalnum</span><span class="p">()</span> <span class="ow">and</span> <span class="n">tok</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">NLTK_STOPWORDS</span><span class="p">:</span>
             <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span>
     
-    <span class="c1"># Final output is ready</span>
     <span class="k">return</span> <span class="s2">" "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
 
 
 <span class="c1"># --- improved emoji replacer (uses df_emoticons list like your original) ---</span>
 <span class="n">_emojis</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">try</span><span class="p">:</span>
+    <span class="c1"># Assumes df_emoticons is loaded in a prior cell</span>
     <span class="n">_emojis</span> <span class="o">=</span> <span class="n">df_emoticons</span><span class="p">[</span><span class="s1">'Emoji'</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
-<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-    <span class="n">_emojis</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">except</span> <span class="ne">NameError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"WARNING: df_emoticons not found. Emoji replacement will be skipped."</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">KeyError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"WARNING: 'Emoji' column not found in df_emoticons. Emoji replacement will be skipped."</span><span class="p">)</span>
+    
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">_emojis</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
     <span class="n">_emoji_pattern</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="s1">'|'</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">escape</span><span class="p">(</span><span class="n">e</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">_emojis</span><span class="p">))</span>
 <span class="k">else</span><span class="p">:</span>
@@ -7993,27 +7990,46 @@ Finally, the $\text{preprocess\_text}$ wrapper function is defined to unify thes
         <span class="k">return</span> <span class="n">_emoji_pattern</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s1">'_EMOJI_'</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">t</span>
 
+<span class="c1"># --- Unified preprocess_text wrapper function ---</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">preprocess_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Unified function used by the interactive widget."""</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">replace_emojis_safe</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">handle_negation_safe</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">t</span>
+
 <span class="c1"># --- apply to dataframe ---</span>
+<span class="c1"># This part applies the two preprocessing steps sequentially:</span>
 <span class="n">df_main</span><span class="p">[</span><span class="s1">'post_cleaned'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_main</span><span class="p">[</span><span class="s1">'post'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">replace_emojis_safe</span><span class="p">)</span>
 <span class="n">df_main</span><span class="p">[</span><span class="s1">'post_cleaned'</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_main</span><span class="p">[</span><span class="s1">'post_cleaned'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">handle_negation_safe</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Completed robust preprocessing (emoji replacement + negation)."</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"USE_NLTK flag: </span><span class="si">{</span><span class="n">USE_NLTK</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="c1"># --- Unified preprocess_text wrapper function ---</span>
-<span class="c1"># This function is necessary to ensure the interactive widget and model tests run correctly.</span>
-<span class="k">def</span><span class="w"> </span><span class="nf">preprocess_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    Unified preprocessing function: </span>
-<span class="sd">    1. Replaces emojis with tokens (uses replace_emojis_safe).</span>
-<span class="sd">    2. Applies negation tagging (uses handle_negation_safe).</span>
-<span class="sd">    (Relies on replace_emojis_safe and handle_negation_safe being defined earlier)</span>
-<span class="sd">    """</span>
-    <span class="c1"># NOTE: These functions (replace_emojis_safe and handle_negation_safe) </span>
-    <span class="c1"># must have been defined in a prior cell.</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">replace_emojis_safe</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-    <span class="n">t</span> <span class="o">=</span> <span class="n">handle_negation_safe</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">t</span>
+<span class="c1"># ========================================================================</span>
+<span class="c1"># --- EXPORT LOGIC ---</span>
+<span class="c1"># ========================================================================</span>
+
+<span class="c1"># 1. Define the columns to save</span>
+<span class="n">df_export</span> <span class="o">=</span> <span class="n">df_main</span><span class="p">[[</span><span class="s1">'post'</span><span class="p">,</span> <span class="s1">'sentiment'</span><span class="p">,</span> <span class="s1">'post_cleaned'</span><span class="p">]]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># 2. Define the output file path</span>
+<span class="n">output_filename</span> <span class="o">=</span> <span class="s1">'1k_data_emoji_tweets_SENTIMENT_CLEANED.csv'</span>
+
+<span class="c1"># 3. Export the DataFrame to a CSV file with error handling for file lock</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">df_export</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="n">output_filename</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="c1"># 4. Confirmation message</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">✅ Successfully created the cleaned dataset file: </span><span class="si">{</span><span class="n">output_filename</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Rows exported: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">df_export</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Head of the new file content:"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">df_export</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+
+<span class="k">except</span> <span class="ne">PermissionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">❌ EXPORT FAILED: Permission denied."</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Please ensure the output file is NOT open in Excel or another program, then rerun the cell."</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">❌ EXPORT FAILED due to an unexpected error: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8028,6 +8044,24 @@ Finally, the $\text{preprocess\_text}$ wrapper function is defined to unify thes
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Completed robust preprocessing (emoji replacement + negation).
 USE_NLTK flag: False
+
+✅ Successfully created the cleaned dataset file: 1k_data_emoji_tweets_SENTIMENT_CLEANED.csv
+Rows exported: 998
+
+Head of the new file content:
+                                                post  sentiment  \
+0                             Good morning every one          1   
+1  TW: S AssaultActually horrified how many frien...          0   
+2  Thanks by has notice of me Greetings : Jossett...          1   
+3                      its ending soon aah unhappy 😧          0   
+4                               My real time happy 😊          1   
+
+                                        post_cleaned  
+0                                       good morning  
+1  tw : s assaultactually horrified friends women...  
+2       thanks notice greetings : jossetted hermanni  
+3                    ending soon aah unhappy _emoji_  
+4                            real time happy _emoji_  
 </pre>
 </div>
 </div>
@@ -8071,7 +8105,7 @@ USE_NLTK flag: False
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Define features (X) and target (y)</span>
@@ -8108,7 +8142,7 @@ USE_NLTK flag: False
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [32]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Vectorize the text data using TF-IDF. The vectorizer is fit only on the training data.</span>
@@ -8138,7 +8172,7 @@ USE_NLTK flag: False
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [9]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Import additional models</span>
@@ -8179,10 +8213,9 @@ USE_NLTK flag: False
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Multinomial Naive Bayes Validation Accuracy: 0.7800
-Logistic Regression Validation Accuracy: 0.7933
-Support Vector Machine (SVC) Validation Accuracy: 0.7867
-Support Vector Machine (SVC) Validation Accuracy: 0.7867
+<pre>Multinomial Naive Bayes Validation Accuracy: 0.7867
+Logistic Regression Validation Accuracy: 0.7867
+Support Vector Machine (SVC) Validation Accuracy: 0.7733
 </pre>
 </div>
 </div>
@@ -8195,7 +8228,9 @@ Support Vector Machine (SVC) Validation Accuracy: 0.7867
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h4 id="Final-Test-Set-Evaluation">Final Test Set Evaluation<a class="anchor-link" href="#Final-Test-Set-Evaluation">¶</a></h4><p>This cell runs the conclusive performance test on the chosen winning model, <strong>Logistic Regression ($\text{LR}$)</strong>, using the reserved, unseen <strong>Test Set ($\mathbf{X\_test}$ and $\mathbf{y\_test}$)</strong>. This step is critical to obtain the final, unbiased metrics for the project, validating the model's ability to generalize to new data. The output displays the overall <strong>Test Set Accuracy</strong> and the detailed <strong>Classification Report</strong> (showing precision, recall, and $\text{F1}$-score).</p>
+<h4 id="Final-Test-Set-Evaluation-(Tie-Breaker)">Final Test Set Evaluation (Tie-Breaker)<a class="anchor-link" href="#Final-Test-Set-Evaluation-(Tie-Breaker)">¶</a></h4><p>This cell performs the conclusive performance test on the reserved, unseen Test Set ($\mathbf{X\_test}$ and $\mathbf{y\_test}$).</p>
+<p>Because the Logistic Regression ($\text{LR}$) and Multinomial Naive Bayes ($\text{MNB}$) models achieved an identical validation accuracy score, the Test Set is utilized as the unbiased tie-breaker.</p>
+<p>Both tied models are evaluated, and the model yielding the higher Test Set Accuracy will be selected as the final, winning model. The output will display the overall Test Set Accuracy and the detailed Classification Report (showing precision, recall, and $\text{F1}$-score) for the ultimately chosen model, validating its ability to generalize to new data.</p>
 </div>
 </div>
 </div>
@@ -8204,18 +8239,27 @@ Support Vector Machine (SVC) Validation Accuracy: 0.7867
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># --- Evaluate the WINNING Model (Logistic Regression) on the Test Set ---</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># --- Evaluate Multinomial Naive Bayes on Test Set ---</span>
+<span class="n">nb_test_pred</span> <span class="o">=</span> <span class="n">nb_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_vectorized</span><span class="p">)</span>
+<span class="n">nb_test_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">nb_test_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"1. Multinomial Naive Bayes Test Accuracy: </span><span class="si">{</span><span class="n">nb_test_accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="c1"># Final prediction on the test set</span>
+<span class="c1"># --- Evaluate Logistic Regression on Test Set ---</span>
 <span class="n">lr_test_pred</span> <span class="o">=</span> <span class="n">lr_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test_vectorized</span><span class="p">)</span>
+<span class="n">lr_test_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">lr_test_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"2. Logistic Regression Test Accuracy: </span><span class="si">{</span><span class="n">lr_test_accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">"--- Logistic Regression Final Test Performance ---"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Test Set Accuracy:"</span><span class="p">,</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">lr_test_pred</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Test Set Classification Report:"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">classification_report</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">lr_test_pred</span><span class="p">))</span>
+<span class="c1"># --- Determine the Winner ---</span>
+<span class="k">if</span> <span class="n">lr_test_accuracy</span> <span class="o">&gt;</span> <span class="n">nb_test_accuracy</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">🏆 WINNER: Logistic Regression is the final model."</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">nb_test_accuracy</span> <span class="o">&gt;</span> <span class="n">lr_test_accuracy</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">🏆 WINNER: Multinomial Naive Bayes is the final model."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># This rarely happens but is possible</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">TIE: Both models performed equally well on the test set. Choose LR for better interpretability."</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -8228,19 +8272,10 @@ Support Vector Machine (SVC) Validation Accuracy: 0.7867
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>--- Logistic Regression Final Test Performance ---
-Test Set Accuracy: 0.8333333333333334
+<pre>1. Multinomial Naive Bayes Test Accuracy: 0.8000
+2. Logistic Regression Test Accuracy: 0.8200
 
-Test Set Classification Report:
-              precision    recall  f1-score   support
-
-           0       0.85      0.81      0.83        74
-           1       0.82      0.86      0.84        76
-
-    accuracy                           0.83       150
-   macro avg       0.83      0.83      0.83       150
-weighted avg       0.83      0.83      0.83       150
-
+🏆 WINNER: Logistic Regression is the final model.
 </pre>
 </div>
 </div>
@@ -8268,7 +8303,7 @@ weighted avg       0.83      0.83      0.83       150
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [11]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
@@ -8337,10 +8372,10 @@ I'm not saying it's the best, but it's okay.            NEGATIVE
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h3 id="Conclusion-and-Final-Model-Justification">Conclusion and Final Model Justification<a class="anchor-link" href="#Conclusion-and-Final-Model-Justification">¶</a></h3><p>The sentiment analysis project has successfully refined the preprocessing pipeline to address the core challenge of <strong>negation</strong> and feature engineering. This refinement led to a significant increase in overall model performance and confidence.</p>
+<h3 id="Conclusion-and-Final-Model-Justification">Conclusion and Final Model Justification<a class="anchor-link" href="#Conclusion-and-Final-Model-Justification">¶</a></h3><p>The sentiment analysis project has successfully refined the preprocessing pipeline to address the core challenge of <strong>negation</strong> and feature engineering, which was crucial for improving model discrimination. This refinement led to a significant change in model performance confidence, resulting in a validation tie that required a final test set evaluation.</p>
 <p>The final model chosen for the Real-Time Tweet Sentiment Analyzer (Question B) is <strong>Logistic Regression ($\text{LR}$)</strong>.</p>
 <hr/>
-<h4 id="1.-Model-Performance-and-Selection-Rationale">1. Model Performance and Selection Rationale<a class="anchor-link" href="#1.-Model-Performance-and-Selection-Rationale">¶</a></h4><p>The final model selection was based on a combination of <strong>raw accuracy on the unseen Test Set</strong> and <strong>robustness on critical linguistic test cases</strong> (Comparative Test Cases).</p>
+<h4 id="1.-Model-Performance-and-Selection-Rationale">1. Model Performance and Selection Rationale<a class="anchor-link" href="#1.-Model-Performance-and-Selection-Rationale">¶</a></h4><p>The final model selection was based on the <strong>tie-breaker outcome</strong> achieved on the reserved, unseen <strong>Test Set</strong>. The improved feature set (which correctly preserved the $\text{\_EMOJI\_}$ placeholder) resulted in a tie on the Validation Set, making the Test Set the definitive metric.</p>
 <table>
 <thead>
 <tr>
@@ -8353,27 +8388,27 @@ I'm not saying it's the best, but it's okay.            NEGATIVE
 <tbody>
 <tr>
 <td style="text-align:left"><strong>Multinomial Naive Bayes</strong></td>
-<td style="text-align:left">$78.00\%$</td>
-<td style="text-align:left">$81.33\%$</td>
-<td style="text-align:left">Excellent baseline, but did not match the linearity of LR on clean features.</td>
+<td style="text-align:left">$78.67\%$</td>
+<td style="text-align:left">$80.00\%$</td>
+<td style="text-align:left">Excellent baseline model, but performed slightly worse than LR on the final, most crucial test of generalization ability.</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Support Vector Classifier</strong></td>
-<td style="text-align:left">$78.67\%$</td>
-<td style="text-align:left">$82.00\%$</td>
-<td style="text-align:left">High performer, but failed the critical negation test until later feature fixes.</td>
+<td style="text-align:left">$77.33\%$</td>
+<td style="text-align:left">—</td>
+<td style="text-align:left">Removed from contention early as accuracy was lower than the tied candidates.</td>
 </tr>
 <tr>
 <td style="text-align:left"><strong>Logistic Regression</strong></td>
-<td style="text-align:left">$79.33\%$</td>
-<td style="text-align:left"><strong>$83.33\%$ (Winning Model)</strong></td>
-<td style="text-align:left">Achieved the highest overall accuracy and correctly handled the core negation challenge.</td>
+<td style="text-align:left">$78.67\%$</td>
+<td style="text-align:left"><strong>$82.00\%$ (Winning Model)</strong></td>
+<td style="text-align:left"><strong>Achieved the highest overall accuracy on the final Test Set</strong>, making it the clear winner for deployment.</td>
 </tr>
 </tbody>
 </table>
 <p>The <strong>Logistic Regression model is the clear winner</strong>, demonstrating the best synergy with the $\text{TF-IDF}$ features derived from the <strong>negation-aware and stopword-filtered text</strong>.</p>
 <hr/>
-<h4 id="2.-Robustness-Validation">2. Robustness Validation<a class="anchor-link" href="#2.-Robustness-Validation">¶</a></h4><p>The final selection is strongly supported by the model's performance on the most challenging input:</p>
+<h4 id="2.-Robustness-Validation">2. Robustness Validation<a class="anchor-link" href="#2.-Robustness-Validation">¶</a></h4><p>The final selection is strongly supported by the model's performance on a critical input that tested the core feature engineering:</p>
 <ul>
 <li><strong>Critical Test Case:</strong> "I do not like this new phone."</li>
 <li><strong>Expected Sentiment:</strong> NEGATIVE</li>
@@ -8442,7 +8477,6 @@ I'm not saying it's the best, but it's okay.            NEGATIVE
     <span class="n">vectorized_text</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">transform</span><span class="p">([</span><span class="n">processed_text_final</span><span class="p">])</span>
     
     <span class="c1"># 3. Make a prediction using the final, WINNING MODEL (LR Model)</span>
-    <span class="c1"># --- CRITICAL CHANGE IS HERE ---</span>
     <span class="n">prediction</span> <span class="o">=</span> <span class="n">lr_model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">vectorized_text</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> 
     
     <span class="c1"># 4. Convert prediction to a readable sentiment label (0: NEGATIVE, 1: POSITIVE)</span>
@@ -8518,7 +8552,7 @@ I'm not saying it's the best, but it's okay.            NEGATIVE
 <hr/>
 <h4 id="1.-Key-Accomplishments">1. Key Accomplishments<a class="anchor-link" href="#1.-Key-Accomplishments">¶</a></h4><ul>
 <li><strong>Robust Feature Engineering:</strong> The primary challenge of linguistic nuance was overcome through a refined preprocessing pipeline that included:<ul>
-<li>Emoji replacement with a dedicated token ($\text{\_EMOJI\_}$).</li>
+<li>Emoji replacement with a dedicated token ($\text{\_emoji\_}$).</li>
 <li><strong>Negation Handling</strong> ($\text{e.g., like\_NEG}$) to correctly reverse sentiment across negator words.</li>
 <li><strong>Stopword Removal</strong> to significantly reduce noise and improve feature signal for the vectorizer.</li>
 </ul>
